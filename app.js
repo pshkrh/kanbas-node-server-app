@@ -18,6 +18,14 @@ app.use(
         origin: process.env.FRONTEND_URL
     })
 );
+const sessionOptions = {
+    secret: "any string",
+    resave: false,
+    saveUninitialized: false,
+};
+app.use(
+    session(sessionOptions)
+);
 app.use(express.json());
 
 UserRoutes(app);

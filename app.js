@@ -6,6 +6,10 @@ import CourseRoutes from "./courses/routes.js";
 import ModuleRoutes from "./modules/routes.js";
 import "dotenv/config";
 import session from "express-session";
+import mongoose from "mongoose";
+import UserRoutes from "./users/routes.js";
+
+mongoose.connect("mongodb://localhost:27017/kanbas");
 
 const app = express();
 app.use(
@@ -16,6 +20,7 @@ app.use(
 );
 app.use(express.json());
 
+UserRoutes(app);
 ModuleRoutes(app);
 CourseRoutes(app);
 Lab5(app);
